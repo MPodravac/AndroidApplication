@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="Unesite_ime">Unesi ime</string>
+    <string name="Unesi">Unesi</string>
+    <string name="Upisi_predmet">Upiši predmet</string>
+    <string name="Upisi">Upiši</string>
+    <string name="Potvrdi">Potvrdi</string>
 </resources>
