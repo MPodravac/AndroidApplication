@@ -18,7 +18,7 @@
         android:id="@+id/editPredmet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/Upisi_predmet" />
+        android:hint="@string/Predmet" />
 
     <Button
         android:id="@+id/btnUpisi"

@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="Unesite_ime">Unesi ime</string>
-    <string name="Unesi">Unesi</string>
-    <string name="Upisi_predmet">Upiši predmet</string>
+    <string name="app_name">Programiranje mobilnih aplikacija</string>
+    <string name="Ime">Ime</string>
+    <string name="Prezime">Prezime</string>
+    <string name="Dalje">Dalje</string>
+    <string name="Predmet">Predmet</string>
     <string name="Upisi">Upiši</string>
     <string name="Potvrdi">Potvrdi</string>
+    <string name="Image">Image</string>
+    <string name="DatumRodenja">Unesite datum rođenja</string>
 </resources>
