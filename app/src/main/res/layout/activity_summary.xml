@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/checkedIme"
         app:layout_constraintEnd_toStartOf="@id/checkedPrezime"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp" />
 
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toStartOf="@id/textViewPrezime"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/Prezime" />
     <TextView
         android:id="@+id/textViewPrezime"
@@ -46,7 +46,6 @@
         app:layout_constraintStart_toEndOf="@id/checkedPrezime"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"/>
 
     <CheckedTextView
@@ -59,7 +58,7 @@
         app:layout_goneMarginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/DatumRodenja" />
     <TextView
         android:id="@+id/textViewDatumRodenja"
@@ -68,7 +67,6 @@
         app:layout_constraintTop_toBottomOf="@id/textViewIme"
         app:layout_constraintStart_toEndOf="@id/checkedDatumRodenja"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"/>
 
@@ -81,7 +79,7 @@
         app:layout_constraintEnd_toStartOf="@id/textViewPredmet"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/Predmet" />
     <TextView
         android:id="@+id/textViewPredmet"
@@ -103,7 +101,7 @@
         app:layout_constraintEnd_toStartOf="@id/textViewProfesor"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/Profesor" />
     <TextView
         android:id="@+id/textViewProfesor"
@@ -125,7 +123,7 @@
         app:layout_constraintEnd_toStartOf="@id/textViewAkGodina"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/AkGodina" />
     <TextView
         android:id="@+id/textViewAkGodina"
@@ -147,7 +145,7 @@
         app:layout_constraintEnd_toStartOf="@id/textViewPredavanja"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/Predavanja" />
     <TextView
         android:id="@+id/textViewPredavanja"
@@ -169,7 +167,7 @@
         app:layout_constraintEnd_toStartOf="@id/textViewVjezbe"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/Vjezbe" />
     <TextView
         android:id="@+id/textViewVjezbe"
