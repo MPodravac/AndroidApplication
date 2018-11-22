@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setPrompt("Odaberite jezik");
-        ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Jezici, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Jezici, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -35,29 +35,26 @@ public class MainActivity extends AppCompatActivity {
                 Intent oDodajNovogStudenta = new Intent(getApplicationContext(), PersonalInfoActivity.class);
                 startActivity(oDodajNovogStudenta);
             }
-            });
+        });
 
         RecyclerView mRecyclerView = findViewById(R.id.my_recycler_view);
         List<Object> studentList = generateList();
         InitializeRecyclerView(mRecyclerView, studentList);
     }
 
-        List<Object> generateList()
-        {
-            List<Object> list = new ArrayList<>();
-            list.add("Studenti");
-            list.add(new Student("Mateja","Podravac"));
-            list.add(new Student("Petar","Mačinković"));
-            list.add(new Student("Ivan","Ivić"));
-            list.add(new Student("Maja","Majić"));
-            return list;
-        }
+    List<Object> generateList() {
+        List<Object> list = new ArrayList<>();
+        list.add("Studenti");
+        list.add(new Student("Mateja", "Podravac"));
+        list.add(new Student("Petar", "Mačinković"));
+        list.add(new Student("Ivan", "Ivić"));
+        list.add(new Student("Maja", "Majić"));
+        return list;
+    }
 
 
-    void InitializeRecyclerView(RecyclerView recyclerView, List<Object>studentList)
-    {
+    void InitializeRecyclerView(RecyclerView recyclerView, List<Object> studentList) {
         recyclerView.setAdapter(new MyRecyclerAdapter(studentList));
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
-
 }
