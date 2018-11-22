@@ -16,38 +16,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-   //private ArrayList lStudenti = new ArrayList<>();
-    //private List<String>lNaslov;
-
-    private ArrayList myDataSet;
-    private Student oStudent;
-    private Naslov oNaslov;
-
-    private Spinner spinner;
-    private Button oBtnNoviStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = findViewById(R.id.spinner);
         spinner.setPrompt("Odaberite jezik");
         ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Jezici, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        Button oBtnNoviStudent = (Button) findViewById(R.id.novi_student);
+        Button oBtnNoviStudent = findViewById(R.id.novi_student);
         oBtnNoviStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent oDodajNovogStudenta = new Intent(getApplicationContext(), PersonalInfoActivity.class);
                 startActivity(oDodajNovogStudenta);
             }
-            });*/
+            });
 
         RecyclerView mRecyclerView = findViewById(R.id.my_recycler_view);
         List<Object> studentList = generateList();
@@ -56,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Object> generateList()
         {
-            List<Object> list=new ArrayList<>();
+            List<Object> list = new ArrayList<>();
             list.add("Studenti");
             list.add(new Student("Mateja","Podravac"));
             list.add(new Student("Petar","Mačinković"));
@@ -68,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     void InitializeRecyclerView(RecyclerView recyclerView, List<Object>studentList)
     {
-        recyclerView.setAdapter(new MyRecyclerAdapter(studentList) {
-        });
+        recyclerView.setAdapter(new MyRecyclerAdapter(studentList));
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
 
