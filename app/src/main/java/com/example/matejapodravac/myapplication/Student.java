@@ -9,4 +9,12 @@ public class Student {
         this.sIme = sIme;
         this.sPrezime = sPrezime;
     }
+
+    public String getsIme() {
+        return sIme;
+    }
+
+    public String getsPrezime() {
+        return sPrezime;
+    }
 }

@@ -13,79 +13,85 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyRecyclerAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolder>{
-    List<Object> dataList;
-    private ArrayList mDataList;
+    static final int TYPE_HEADER = 0;
+    static final int TYPE_STUDENT = 1;
 
-    public MyRecyclerAdapter(ArrayList myDataSet){
-        mDataList = myDataSet;
+    private List<Object> dataList;
+    //private ArrayList mDataList;
+
+    public MyRecyclerAdapter(List<Object> dataList){
+        this.dataList = dataList;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType){
-        if (viewType == 0)
+        if (viewType == TYPE_HEADER)
         {
             View view = (View) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.header_layout, viewGroup, false);
-            return new StudentViewHolder(view);
-            /*
-            * TextView headerviewholder = (TextView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.header_layout, viewGroup, false);
-            * HeaderViewHolder headerView = new HeaderViewHolder(headerviewholder);
-            * return headerView;
-            * */
+            return new HeaderViewHolder(view);
         }
         else
         {
             View view = (View) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.student_layout, viewGroup, false);
-            return new HeaderViewHolder(view);
+            return new StudentViewHolder(view);
 
-            /*
-             * TextView studentviewholder = (TextView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.header_layout, viewGroup, false);
-             * HeaderViewHolder studentviewholder = new StudentViewHolder(studentviewholder);
-             * return studentviewholder;
-             * */
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        if (position == 0) {
-            HeaderViewHolder headerviewholder = (HeaderViewHolder) viewHolder;
-        }
-        else
+
+        Object data = dataList.get(position);
+
+        if (viewHolder instanceof HeaderViewHolder && data instanceof String)
         {
-            StudentViewHolder studentviewholder = (StudentViewHolder) viewHolder;
+            String headerTitle = (String) data;
+            ((HeaderViewHolder)viewHolder).tvHeaderLabel.setText(headerTitle);
+        }
+        else if(viewHolder instanceof StudentViewHolder && data instanceof Student )
+        {
+            Student student = (Student) data;
+            ((StudentViewHolder)viewHolder).tvStudentIme.setText(student.getsIme());
+            ((StudentViewHolder)viewHolder).tvStudentPrezime.setText(student.getsPrezime());
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return mDataList.size();
+        return dataList.size();
     }
 
     @Override
     public int getItemViewType(int position){
-        if (position==0)
+        if (dataList.get(position)instanceof String)
         {
-            return 0;
+            return TYPE_HEADER;
         }
-        else return 1;
+        else
+            {
+                return TYPE_STUDENT;
+            }
+    }
+
+    class HeaderViewHolder extends RecyclerView.ViewHolder{
+        TextView tvHeaderLabel;
+
+        public HeaderViewHolder(@NonNull View itemView){
+            super(itemView);
+            tvHeaderLabel = itemView.findViewById(R.id.textViewNaslov);
+        }
     }
 
     class StudentViewHolder extends RecyclerView.ViewHolder{
         TextView tvStudentIme;
         TextView tvStudentPrezime;
-        public StudentViewHolder(@NonNull View ContentView){
-                super(ContentView);
-            tvStudentIme = ContentView.findViewById(R.id.textViewIme);
-            tvStudentPrezime = ContentView.findViewById(R.id.textViewPrezime);
-        }
-    }
-    class HeaderViewHolder extends RecyclerView.ViewHolder{
-        TextView tvHeader;
-        public HeaderViewHolder(@NonNull View headerView){
-            super(headerView);
-            tvHeader = itemView.findViewById(R.id.textViewNaslov);
+
+        public StudentViewHolder(@NonNull View itemView){
+            super(itemView);
+            tvStudentIme = itemView.findViewById(R.id.textViewIme);
+            tvStudentPrezime = itemView.findViewById(R.id.textViewPrezime);
         }
     }
 }

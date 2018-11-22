@@ -14,8 +14,9 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@id/textViewPrezime"
-        android:text="@string/Ime" />
+        tools:text="Ime: Student" />
 
     <TextView
         android:id="@+id/textViewPrezime"
@@ -23,8 +24,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textViewIme"
-        android:text="@string/Prezime" />
+        android:text="Prezime: Student 1" />
 </android.support.constraint.ConstraintLayout>

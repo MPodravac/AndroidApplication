@@ -8,13 +8,12 @@
 
     <TextView
         android:id="@+id/textViewNaslov"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        tools:text="Studenti"
-        />
+        tools:text="Naslov" />
 </android.support.constraint.ConstraintLayout>
