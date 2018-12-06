@@ -7,21 +7,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.matejapodravac.myapplication.fragment.PersonalInfoFragment;
 import com.example.matejapodravac.myapplication.fragment.StudentInfoFragment;
 import com.example.matejapodravac.myapplication.fragment.SummaryFragment;
-import com.example.matejapodravac.myapplication.listeners.AcademicYearListener;
-import com.example.matejapodravac.myapplication.listeners.BirthDateListener;
-import com.example.matejapodravac.myapplication.listeners.LastNameListener;
-import com.example.matejapodravac.myapplication.listeners.NameListener;
-import com.example.matejapodravac.myapplication.listeners.PredavanjaListener;
-import com.example.matejapodravac.myapplication.listeners.ProfesorListener;
-import com.example.matejapodravac.myapplication.listeners.SubjectListener;
+import com.example.matejapodravac.myapplication.listeners.PersonalInfoListener;
+import com.example.matejapodravac.myapplication.listeners.StudentInfoListener;
 import com.example.matejapodravac.myapplication.listeners.SummaryInfoDataSource;
-import com.example.matejapodravac.myapplication.listeners.VjezbeListener;
 import com.example.matejapodravac.myapplication.models.Person;
 import com.example.matejapodravac.myapplication.models.Subject;
 
 import java.util.List;
 
-public class FragmentAdapter extends FragmentPagerAdapter implements NameListener, LastNameListener, BirthDateListener, SubjectListener, ProfesorListener, AcademicYearListener, PredavanjaListener, VjezbeListener, SummaryInfoDataSource {
+public class FragmentAdapter extends FragmentPagerAdapter implements PersonalInfoListener, StudentInfoListener, SummaryInfoDataSource/*, ImageListener*/ {
+    List<Integer> dataList;
     private String name = "";
     private String lastName = "";
     private String birthDate = "";
@@ -30,40 +25,39 @@ public class FragmentAdapter extends FragmentPagerAdapter implements NameListene
     private String akGodina = "";
     private String predavanja = "";
     private String vjezbe = "";
+    //private int imageResourceId;
 
-    public FragmentAdapter(FragmentManager fm) {
+    public FragmentAdapter(FragmentManager fm, List<Integer> dataList) {
         super(fm);
+        this.dataList = dataList;
     }
 
     @Override
     public Fragment getItem(int position) {
         Fragment fragment;
-        switch (position){
-            case 0:
-                fragment = PersonalInfoFragment.newInstance();
-                ((PersonalInfoFragment)fragment).nameListener = this;
-                ((PersonalInfoFragment)fragment).lastNameListener = this;
-                ((PersonalInfoFragment)fragment).birthDateListener = this;
-                break;
-            case 1:
-                fragment = StudentInfoFragment.newInstance();
-                ((StudentInfoFragment)fragment).subjectListener = this;
-                ((StudentInfoFragment)fragment).profesorListener = this;
-                ((StudentInfoFragment)fragment).academicYearListener = this;
-                ((StudentInfoFragment)fragment).predavanjaListener = this;
-                ((StudentInfoFragment)fragment).vjezbeListener = this;
-                break;
-            default:
-                fragment = SummaryFragment.newInstance();
-                ((SummaryFragment) fragment).dataSource = this;
-                break;
+        int dataType = dataList.get(position);
+        if(dataType == 1)
+        {
+            fragment = PersonalInfoFragment.newInstance();
+            //((PersonalInfoFragment)fragment).imageListener = this;
+            ((PersonalInfoFragment)fragment).personalInfoListener = this;
+        }
+        else if(dataType == 2)
+        {
+            fragment = StudentInfoFragment.newInstance();
+            ((StudentInfoFragment)fragment).studentInfoListener = this;
+        }
+        else
+        {
+            fragment = SummaryFragment.newInstance();
+            ((SummaryFragment) fragment).dataSource = this;
         }
         return fragment;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return dataList.size();
     }
 
     @Override
@@ -116,4 +110,13 @@ public class FragmentAdapter extends FragmentPagerAdapter implements NameListene
     public Subject getSubject() {
         return new Subject(subject, profesor, akGodina, predavanja, vjezbe);
     }
+
+    /*@Override
+    public void setImageResourceId(int imageResourceId) {
+        this.imageResourceId = imageResourceId;
+    }
+
+    public Image getImage(){
+        return new Image(imageResourceId);
+    }*/
 }
