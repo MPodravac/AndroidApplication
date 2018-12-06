@@ -1,6 +1,10 @@
 package com.example.matejapodravac.myapplication.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,7 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.matejapodravac.myapplication.R;
-import com.example.matejapodravac.myapplication.listeners.ImageListener;
 import com.example.matejapodravac.myapplication.listeners.PersonalInfoListener;
 
 public class PersonalInfoFragment extends Fragment {
@@ -21,10 +24,9 @@ public class PersonalInfoFragment extends Fragment {
     private static final String EXTRA_IMAGE_ID = "EXTRA_IMAGE_ID";
     private static final int REQUEST_IMAGE_CAPTURE = 1;
 
-    public static PersonalInfoFragment newInstance(/*int imageResourceId*/){
+    public static PersonalInfoFragment newInstance(){
 
         Bundle extras = new Bundle();
-        //extras.putInt(EXTRA_IMAGE_ID, imageResourceId);
         PersonalInfoFragment fragment = new PersonalInfoFragment();
         fragment.setArguments(extras);
 
@@ -35,7 +37,6 @@ public class PersonalInfoFragment extends Fragment {
     EditText etLastName;
     EditText etBirthDate;
     ImageView imageView;
-    public ImageListener imageListener;
     public PersonalInfoListener personalInfoListener;
 
     @Override
@@ -47,15 +48,9 @@ public class PersonalInfoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflatedView = inflater.inflate(R.layout.fragment_personal_info, container, false);
-        /*imageView = inflatedView.findViewById(R.id.imageView);
+        imageView = inflatedView.findViewById(R.id.imageView);
         imageView.setOnClickListener(onCameraButtonClickListener);
-
-        Bundle bundle = getArguments();
-
-        if(bundle != null){
-            setupImageView(bundle.getInt(EXTRA_IMAGE_ID));
-        }*/
-
+        
         etName = inflatedView.findViewById(R.id.etName);
         etName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -130,10 +125,9 @@ public class PersonalInfoFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         personalInfoListener = null;
-        imageListener = null;
     }
 
-    /*@Override
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -157,6 +151,6 @@ public class PersonalInfoFragment extends Fragment {
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE); }
         }
-    };*/
+    };
 
 }

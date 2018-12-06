@@ -1,4 +1,4 @@
-package com.example.matejapodravac.myapplication;
+package com.example.matejapodravac.myapplication.models;
 
 public class Naslov
 {

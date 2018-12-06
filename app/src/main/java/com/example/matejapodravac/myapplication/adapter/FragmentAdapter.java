@@ -15,7 +15,7 @@ import com.example.matejapodravac.myapplication.models.Subject;
 
 import java.util.List;
 
-public class FragmentAdapter extends FragmentPagerAdapter implements PersonalInfoListener, StudentInfoListener, SummaryInfoDataSource/*, ImageListener*/ {
+public class FragmentAdapter extends FragmentPagerAdapter implements PersonalInfoListener, StudentInfoListener, SummaryInfoDataSource {
     List<Integer> dataList;
     private String name = "";
     private String lastName = "";
@@ -25,7 +25,6 @@ public class FragmentAdapter extends FragmentPagerAdapter implements PersonalInf
     private String akGodina = "";
     private String predavanja = "";
     private String vjezbe = "";
-    //private int imageResourceId;
 
     public FragmentAdapter(FragmentManager fm, List<Integer> dataList) {
         super(fm);
@@ -39,7 +38,6 @@ public class FragmentAdapter extends FragmentPagerAdapter implements PersonalInf
         if(dataType == 1)
         {
             fragment = PersonalInfoFragment.newInstance();
-            //((PersonalInfoFragment)fragment).imageListener = this;
             ((PersonalInfoFragment)fragment).personalInfoListener = this;
         }
         else if(dataType == 2)
@@ -110,13 +108,4 @@ public class FragmentAdapter extends FragmentPagerAdapter implements PersonalInf
     public Subject getSubject() {
         return new Subject(subject, profesor, akGodina, predavanja, vjezbe);
     }
-
-    /*@Override
-    public void setImageResourceId(int imageResourceId) {
-        this.imageResourceId = imageResourceId;
-    }
-
-    public Image getImage(){
-        return new Image(imageResourceId);
-    }*/
 }
