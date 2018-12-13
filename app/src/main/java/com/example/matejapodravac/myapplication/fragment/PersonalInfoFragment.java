@@ -50,7 +50,7 @@ public class PersonalInfoFragment extends Fragment {
         View inflatedView = inflater.inflate(R.layout.fragment_personal_info, container, false);
         imageView = inflatedView.findViewById(R.id.imageView);
         imageView.setOnClickListener(onCameraButtonClickListener);
-        
+
         etName = inflatedView.findViewById(R.id.etName);
         etName.addTextChangedListener(new TextWatcher() {
             @Override
